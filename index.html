@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaDaTours - Dashboard</title>
+    <!-- Favicon/logo de la empresa -->
+    <link rel="icon" type="image/png" href="/images/MadatourLogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="/images/MadatourLogo.png" alt="Logo MaDaTours">
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" data-i18n="nav.flightSites">Nuestros sitios de vuelo</a>
+                    <span style="margin: 0 10px;">|</span>
+                    <a href="login.html" id="link-nav-login" data-i18n="nav.login">Login</a>
+                </li>
+                <li><a href="registro.html" id="link-nav-registro" data-i18n="nav.register">Registrarse</a></li>
+                <!-- Selector de idioma. No se pueden mostrar banderas en <option>, solo texto. -->
+                <li>
+                    <select id="language-selector" onchange="changeLanguage(this.value)">
+                        <option value="es">ES - Español</option>
+                        <option value="en">EN - English</option>
+                        <option value="de">DE - Deutsch</option>
+                        <option value="fr">FR - Français</option>
+                        <option value="nl">NL - Nederlands</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="tour-banner">
+        <div class="slides">
+            <div class="slide slide-1"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+            <div class="slide slide-5"></div>
+            <div class="slide slide-6"></div>
+        </div>
+        <div class="banner-text">
+            <h1 data-i18n="banner.title">Explora el Cielo con MaDaTours</h1>
+        </div>
+    </section>
+
+    <section id="content-section">
+        <div class="card">
+            <h2 data-i18n="about.title">¿Quiénes somos?</h2>
+            <p data-i18n="about.description">MaDaTours es una empresa dedicada a transformar el turismo de aventura en Antioquia y el Valle del Cauca. Nacimos de la pasión por volar y el deseo de mostrar la belleza de Colombia desde las nubes.</p>
+        </div>
+
+        <div class="card">
+            <h2 data-i18n="team.madabeski.name">Madabeski Ramirez</h2>
+            <p data-i18n="team.madabeski.desc">Líder y estratega de MaDaTours. Su visión ha permitido que la empresa crezca ofreciendo experiencias seguras y emocionantes para visitantes internacionales.</p>
+        </div>
+
+        <div class="card">
+            <h2 data-i18n="team.daniel.name">Daniel Builes</h2>
+            <p data-i18n="team.daniel.desc">Especialista en desarrollo y logística. Daniel combina su conocimiento técnico con su amor por el parapente para asegurar que cada tour sea una obra maestra de precisión.</p>
+        </div>
+
+        <div class="card">
+            <h2 data-i18n="team.jorge.name">Jorge Restrepo</h2>
+            <p data-i18n="team.jorge.desc">Con años de experiencia en el aire, Jorge es el corazón operativo. Su enfoque en el servicio al cliente garantiza que cada viajero se sienta como en familia.</p>
+        </div>
+    </section>
+
+    <footer>
+        <h3 data-i18n="footer.social">Nuestras redes sociales</h3>
+        <div class="social-grid">
+            <div class="social-column">
+                <h4 data-i18n="team.madabeski.name">Madabeski Ramirez</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="social-column">
+                <h4 data-i18n="team.daniel.name">Daniel Builes</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="social-column">
+                <h4 data-i18n="team.jorge.name">Jorge Restrepo</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            es: {
+                "nav.flightSites": "Nuestros sitios de vuelo",
+                "nav.login": "Login",
+                "nav.register": "Registrarse",
+                "banner.title": "Explora el Cielo con MaDaTours",
+                "about.title": "¿Quiénes somos?",
+                "about.description": "MaDaTours es una empresa dedicada a transformar el turismo de aventura en Antioquia y el Valle del Cauca. Nacimos de la pasión por volar y el deseo de mostrar la belleza de Colombia desde las nubes.",
+                "team.madabeski.name": "Madabeski Ramirez",
+                "team.madabeski.desc": "Líder y estratega de MaDaTours. Su visión ha permitido que la empresa crezca ofreciendo experiencias seguras y emocionantes para visitantes internacionales.",
+                "team.daniel.name": "Daniel Builes",
+                "team.daniel.desc": "Especialista en desarrollo y logística. Daniel combina su conocimiento técnico con su amor por el parapente para asegurar que cada tour sea una obra maestra de precisión.",
+                "team.jorge.name": "Jorge Restrepo",
+                "team.jorge.desc": "Con años de experiencia en el aire, Jorge es el corazón operativo. Su enfoque en el servicio al cliente garantiza que cada viajero se sienta como en familia.",
+                "footer.social": "Nuestras redes sociales"
+            },
+            en: {
+                "nav.flightSites": "Our Flight Sites",
+                "nav.login": "Login",
+                "nav.register": "Register",
+                "banner.title": "Explore the Sky with MaDaTours",
+                "about.title": "Who are we?",
+                "about.description": "MaDaTours is a company dedicated to transforming adventure tourism in Antioquia and Valle del Cauca. We were born from the passion for flying and the desire to show the beauty of Colombia from the clouds.",
+                "team.madabeski.name": "Madabeski Ramirez",
+                "team.madabeski.desc": "Leader and strategist of MaDaTours. His vision has allowed the company to grow by offering safe and exciting experiences for international visitors.",
+                "team.daniel.name": "Daniel Builes",
+                "team.daniel.desc": "Development and logistics specialist. Daniel combines his technical knowledge with his love for paragliding to ensure that each tour is a masterpiece of precision.",
+                "team.jorge.name": "Jorge Restrepo",
+                "team.jorge.desc": "With years of experience in the air, Jorge is the operational heart. His focus on customer service ensures that every traveler feels like family.",
+                "footer.social": "Our social networks"
+            },
+            de: {
+                "nav.flightSites": "Unsere Flugplätze",
+                "nav.login": "Login",
+                "nav.register": "Registrieren",
+                "banner.title": "Entdecke den Himmel mit MaDaTours",
+                "about.title": "Wer sind wir?",
+                "about.description": "MaDaTours ist ein Unternehmen, das sich der Transformation des Abenteuertourismus in Antioquia und Valle del Cauca widmet. Wir wurden aus der Leidenschaft für das Fliegen und dem Wunsch geboren, die Schönheit Kolumbiens aus den Wolken zu zeigen.",
+                "team.madabeski.name": "Madabeski Ramirez",
+                "team.madabeski.desc": "Führer und Stratege von MaDaTours. Seine Vision hat es dem Unternehmen ermöglicht, sich zu entwickeln und sichere und aufregende Erlebnisse für internationale Besucher anzubieten.",
+                "team.daniel.name": "Daniel Builes",
+                "team.daniel.desc": "Entwicklungs- und Logistikspezialist. Daniel kombiniert sein technisches Wissen mit seiner Liebe zum Gleitschirmfliegen, um sicherzustellen, dass jede Tour ein Meisterwerk der Präzision ist.",
+                "team.jorge.name": "Jorge Restrepo",
+                "team.jorge.desc": "Mit jahrelanger Erfahrung in der Luft ist Jorge das operative Herz. Sein Fokus auf Kundenservice stellt sicher, dass sich jeder Reisende wie Familie fühlt.",
+                "footer.social": "Unsere sozialen Netzwerke"
+            },
+            fr: {
+                "nav.flightSites": "Nos sites de vol",
+                "nav.login": "Connexion",
+                "nav.register": "S'inscrire",
+                "banner.title": "Explorez le ciel avec MaDaTours",
+                "about.title": "Qui sommes-nous?",
+                "about.description": "MaDaTours est une entreprise dédiée à la transformation du tourisme d'aventure en Antioquia et dans la Vallée du Cauca. Nous sommes nés de la passion du vol et du désir de montrer la beauté de la Colombie depuis les nuages.",
+                "team.madabeski.name": "Madabeski Ramirez",
+                "team.madabeski.desc": "Leader et stratège de MaDaTours. Sa vision a permis à l'entreprise de croître en offrant des expériences sûres et passionnantes aux visiteurs internationaux.",
+                "team.daniel.name": "Daniel Builes",
+                "team.daniel.desc": "Spécialiste en développement et logistique. Daniel combine ses connaissances techniques avec son amour du parapente pour assurer que chaque tour soit un chef-d'œuvre de précision.",
+                "team.jorge.name": "Jorge Restrepo",
+                "team.jorge.desc": "Avec des années d'expérience dans les airs, Jorge est le cœur opérationnel. Son focus sur le service client garantit que chaque voyageur se sente comme chez lui.",
+                "footer.social": "Nos réseaux sociaux"
+            },
+            nl: {
+                "nav.flightSites": "Onze vliegplekken",
+                "nav.login": "Login",
+                "nav.register": "Registreren",
+                "banner.title": "Verken de lucht met MaDaTours",
+                "about.title": "Wie zijn wij?",
+                "about.description": "MaDaTours is een bedrijf dat zich richt op het transformeren van avonturentoerisme in Antioquia en Valle del Cauca. We zijn geboren uit de passie voor vliegen en de wens om de schoonheid van Colombia vanuit de wolken te tonen.",
+                "team.madabeski.name": "Madabeski Ramirez",
+                "team.madabeski.desc": "Leider en strateeg van MaDaTours. Zijn visie heeft het bedrijf laten groeien door veilige en opwindende ervaringen te bieden aan internationale bezoekers.",
+                "team.daniel.name": "Daniel Builes",
+                "team.daniel.desc": "Specialist in ontwikkeling en logistiek. Daniel combineert zijn technische kennis met zijn liefde voor paragliding om ervoor te zorgen dat elke tour een meesterwerk van precisie is.",
+                "team.jorge.name": "Jorge Restrepo",
+                "team.jorge.desc": "Met jaren ervaring in de lucht is Jorge het operationele hart. Zijn focus op klantenservice zorgt ervoor dat elke reiziger zich als familie voelt.",
+                "footer.social": "Onze sociale netwerken"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Cargar idioma guardado
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                document.getElementById('language-selector').value = savedLang;
+                changeLanguage(savedLang);
+            }
+        });
+    </script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

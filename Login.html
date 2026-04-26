@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaDaTours - Login</title>
+    <!-- Favicon/logo de la empresa -->
+    <link rel="icon" type="image/png" href="/images/MadatourLogo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Usuario</h1>
+            <input type="text" id="usuario" placeholder="Ingresa tu usuario">
+            
+            <h1>Contraseña</h1>
+            <input type="password" id="password" placeholder="Ingresa tu contraseña">
+            
+            <button id="btn-enviar" class="btn-primary">Enviar</button>
+            
+            <!-- Enlaces secundarios: registro y volver al dashboard -->
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+                <a href="registro.html" id="link-registro" class="registro-link">Regístrate aquí</a>
+                <a href="index.html" id="link-volver" class="volver-link">Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-error" class="modal">
+        <div class="modal-content">
+            <div class="icon-warning">⚠️</div>
+            <h2>¡Ups! Algo salió mal</h2>
+            <p>Usuario o contraseña incorrecto</p>
+            <button id="btn-entendido" class="btn-error">Entendido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaDaTours - Registro</title>
+    <!-- Favicon/logo de la empresa -->
+    <link rel="icon" type="image/png" href="/images/MadatourLogo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box registro-box">
+            <h1>Crear Cuenta</h1>
+            
+            <input type="text" id="reg-nombre" placeholder="Ingresa Nombre completo">
+            <input type="email" id="reg-correo" placeholder="Ingresa Correo electrónico">
+            <input type="tel" id="reg-telefono" placeholder="Ingresa teléfono celular">
+            <input type="password" id="reg-pass" placeholder="Ingresa contraseña">
+            
+            <button id="btn-registrar" class="btn-primary">Registrarse</button>
+            
+            <a href="index.html" class="volver-link">Volver al inicio</a>
+        </div>
+    </div>
+
+    <div id="modal-db" class="modal">
+        <div class="modal-content">
+            <div class="db-icon">🗄️</div>
+            <h2>Guardando en Base de Datos...</h2>
+            <p>Registrando nuevo usuario en el sistema.</p>
+        </div>
+    </div>
+    <div id="modal-error" class="modal">
+        <div class="modal-content">
+            <div class="icon-warning">⚠️</div>
+            <h2>¡Ups! Algo salió mal</h2>
+            <p>Por favor, completa todos los campos para continuar.</p>
+            <button id="btn-entendido" class="btn-error">Entendido</button>
+        </div>
+    </div>
+
+    <script src="registro.js"></script>
+</body>
+</html>

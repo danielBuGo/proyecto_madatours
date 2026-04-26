@@ -1,0 +1,379 @@
+/*
+    Documentación de estilos CSS para el proyecto
+
+    1. Configuración general
+         - Reinicia márgenes y rellenos.
+         - Define box-sizing para todos los elementos.
+         - Establece fuente principal del sitio.
+         - Configura fondo fijo de pantalla completa con imagen y
+             establece color de texto principal blanco.
+
+    2. Capa oscura global
+         - Añade un pseudo-elemento fijo sobre el body para oscurecer
+             el fondo y mejorar la legibilidad del contenido (efecto
+             glassmorphism).
+
+    3. Header dinámico
+         - Barra de navegación fija en la parte superior.
+         - Fondo semitransparente con blur y borde inferior visible.
+         - Contiene logo e ítems de navegación con separación y efectos
+             hover sobre enlaces.
+
+    4. Contenedores de login y registro
+         - Estructura centrada verticalmente para formularios de inicio
+             de sesión y registro.
+         - Cajas con fondo translucido, bordes redondeados, sombra y
+             efecto vidrio.
+         - Sobresale un ancho mayor para el formulario de registro.
+
+    5. Inputs y botones
+         - Controles de formulario con estilo limpio y fondo claro.
+         - Botón principal verde con transición y efecto hover.
+         - Enlaces secundarios subrayados para navegación entre vistas.
+
+    6. Dashboard: banner y tarjetas
+         - Banner de tours con slider animado de imágenes.
+         - Tarjetas en grid responsive con fondo difuminado, borde
+             redondeado y efectos “hover” que elevan y aclaran la tarjeta.
+         - Títulos de tarjeta con color cian y animación de color al
+             pasar el cursor.
+
+    7. Modales
+         - Overlay completo para mensajes de error o base de datos.
+         - Contenido centrado con fondo blanco, bordes redondeados y
+             botón de cierre.
+         - Ícono de estado destacado.
+
+    8. Footer
+         - Pie de página oscuro con padding y borde superior sutil.
+         - Grid de iconos sociales responsivo con efectos hover.
+
+    9. Responsividad
+         - Ajusta ancho de cajas y columnas para pantallas medias.
+         - En móviles reduce columnas a una sola, ajusta el header y
+             mejora el posicionamiento del contenedor de login.
+*/
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*
+    PALETA PRINCIPAL PARA PARAPENTE
+    - Azul cielo: #4FC3F7
+    - Azul profundo: #1976D2
+    - Verde naturaleza: #43A047
+    - Amarillo cálido: #FFB300
+    - Naranja suave: #FF7043
+    - Blanco: #FAFAFA
+    - Turquesa: #00B8D4
+*/
+
+body {
+    /* Fondo con imagen de cielo/montaña y capa oscura para transmitir libertad y aventura */
+    background: url(/images/fondo.jpg) no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: #1976D2; /* Azul profundo para texto principal */
+}
+
+/* Capa oscura global para mejorar legibilidad (Glassmorphism) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* --- HEADER DINÁMICO --- */
+    /* Header fijo, fondo azul profundo semitransparente, borde azul cielo */
+header {
+    background: rgba(25, 118, 210, 0.85); /* Azul profundo con transparencia */
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #4FC3F7; /* Borde azul cielo */
+    box-shadow: 0 4px 30px rgba(25, 118, 210, 0.08);
+}
+
+.logo img { height: 80px; }
+
+nav ul { display: flex; list-style: none; gap: 30px; }
+
+
+/* Links de navegación: blanco sobre azul, hover amarillo para energía */
+nav a {
+    color: #FAFAFA; /* Blanco para contraste en header azul */
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+nav a:hover {
+    color: #FFB300; /* Amarillo cálido para hover */
+}
+
+
+/* Selector de idioma: borde azul cielo, hover amarillo */
+#language-selector {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 2px solid #4FC3F7; /* Azul cielo */
+    background: #FAFAFA;
+    color: #1976D2;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+#language-selector:hover { border-color: #FFB300; }
+
+/*
+    Selector de idioma: solo texto, sin banderas (limitación de <option> HTML).
+    Se mantiene el estilo para el select.
+*/
+
+/* --- CONTENEDORES DE LOGIN Y REGISTRO --- */
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    width: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.registro-box {
+    width: 420px; /* Más ancho para el formulario de registro */
+}
+
+h1 { 
+    font-size: 24px; 
+    margin-bottom: 15px; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+/* --- BOTONES Y ENLACES --- */
+
+/* Botón principal: amarillo/naranja para energía */
+/* Botón principal: amarillo/naranja para energía y acción */
+.btn-primary {
+    background-color: #FFB300;
+    color: #1976D2;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s ease;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(255, 179, 0, 0.15);
+}
+.btn-primary:hover { 
+    background-color: #FF7043; /* Naranja suave */
+    color: #FAFAFA;
+    transform: scale(1.04);
+    box-shadow: 0 0 20px rgba(255, 179, 0, 0.25);
+}
+
+
+/* Enlaces secundarios: turquesa para frescura */
+.registro-link, .volver-link {
+    display: block;
+    margin-top: 20px;
+    color: #00B8D4; /* Turquesa para enlaces secundarios */
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+/* --- DASHBOARD: BANNER Y TARJETAS --- */
+#tour-banner {
+    height: 60vh;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    animation: slideAction 12s infinite;
+}
+
+.slide { width: 100%; background-size: cover; background-position: center; }
+.slide-1 { background-image: url(/images/img1.jpeg); } 
+.slide-2 { background-image: url(/images/img2.jpeg); opacity: 0.8; }
+.slide-3 { background-image: url(/images/img3.jpeg); filter: brightness(0.8); }
+.slide-4 { background-image: url(/images/img4.jpeg); filter: brightness(0.8); }
+.slide-5 { background-image: url(/images/img5.jpeg); filter: brightness(0.8); }
+.slide-6 { background-image: url(/images/img6.jpeg); filter: brightness(0.8); }
+
+@keyframes slideAction {
+    0%, 30% { transform: translateX(0); }
+    33%, 63% { transform: translateX(-33.33%); }
+    66%, 96% { transform: translateX(-66.66%); }
+    100% { transform: translateX(0); }
+}
+
+
+/* Sección de contenido: fondo blanco suave, bordes redondeados */
+#content-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 50px 5%;
+    background: rgba(250, 250, 250, 0.7); /* Fondo blanco suave para contraste */
+    border-radius: 30px;
+    margin-top: 30px;
+}
+
+
+/* Tarjetas: gradiente azul cielo a verde, borde azul cielo, hover amarillo/verde */
+.card {
+    background: linear-gradient(135deg, #E3F2FD 60%, #A5D6A7 100%); /* Azul cielo a verde naturaleza */
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 50px; /* Bordes muy redondeados para forma de nube */
+    border: 2px solid #4FC3F7; /* Azul cielo */
+    transition: all 0.5s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: #1976D2;
+}
+.card h2 { 
+    font-size: 22px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #1976D2; /* Azul profundo */
+    transition: color 0.5s ease;
+}
+.card:hover {
+    transform: translateY(-15px) scale(1.02);
+    background: #FFFBFA; /* Blanco casi puro */
+    box-shadow: 0 20px 40px rgba(79, 195, 247, 0.15), 
+                0 0 20px rgba(255, 179, 0, 0.10);
+    color: #43A047; /* Verde naturaleza */
+}
+.card:hover h2 {
+    color: #FFB300; /* Amarillo cálido */
+    text-shadow: none;
+}
+
+
+/* --- MODALES (ERROR Y DB) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 35px;
+    border-radius: 25px;
+    text-align: center;
+    color: #333;
+    width: 90%;
+    max-width: 400px;
+}
+
+.btn-error {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.db-icon { font-size: 50px; margin-bottom: 10px; }
+
+/* --- FOOTER --- */
+
+/* Footer: degradado azul profundo a verde, borde azul cielo */
+footer {
+    background: linear-gradient(to bottom, #1976D2 60%, #43A047 100%); /* Azul profundo a verde naturaleza */
+    padding: 60px 5%;
+    text-align: center;
+    border-top: 2px solid #4FC3F7;
+    color: #FAFAFA;
+}
+
+.social-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    gap: 20px;
+}
+
+
+/* Iconos sociales: blanco, hover amarillo */
+.social-icons a {
+    color: #FAFAFA;
+    font-size: 26px;
+    margin: 0 12px;
+    transition: 0.3s ease;
+}
+.social-icons a:hover {
+    color: #FFB300; /* Amarillo cálido para hover */
+    transform: translateY(-5px);
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+    .login-box { width: 90%; }
+    #content-section { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    body { height: auto; }
+    .login-container { align-items: flex-start; padding-top: 50px; }
+    #content-section { grid-template-columns: 1fr; }
+    header { padding: 10px 2%; }
+    nav ul { gap: 15px; }
+}
