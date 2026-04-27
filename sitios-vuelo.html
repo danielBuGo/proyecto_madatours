@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitios de Vuelo - MaDaTours</title>
+    <link rel="icon" type="image/png" href="/images/MadatourLogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para la página de sitios de vuelo */
+        .flight-sites-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .flight-sites-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .flight-sites-header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .flight-sites-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Contenedor del mapa */
+        .map-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .colombia-map {
+            flex: 1;
+            min-width: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .map-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        /* SVG del mapa de Colombia */
+        .map-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .map-svg path {
+            fill: #bdc3c7;
+            stroke: #fff;
+            stroke-width: 1.5;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .map-svg path.available {
+            fill: #27ae60;
+        }
+
+        .map-svg path.available:hover,
+        .map-svg path.selected {
+            fill: #2ecc71;
+            filter: brightness(1.2);
+            transform: scale(1.02);
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-color.available {
+            background: #27ae60;
+        }
+
+        .legend-color.unavailable {
+            background: #bdc3c7;
+        }
+
+        /* Panel de información del departamento */
+        .info-panel {
+            flex: 0 0 400px;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .info-panel h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #27ae60;
+        }
+
+        .no-selection {
+            text-align: center;
+            color: #95a5a6;
+            padding: 40px 20px;
+        }
+
+        .no-selection i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+
+        /* Tarjetas de sitios de vuelo */
+        .flight-site-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #27ae60;
+            transition: all 0.3s ease;
+        }
+
+        .flight-site-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .site-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .site-gps-btn {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .site-gps-btn:hover {
+            background: #3367d6;
+            transform: scale(1.05);
+        }
+
+        /* Acordeón */
+        .accordion {
+            margin-top: 15px;
+        }
+
+        .accordion-item {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: #fff;
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #f8f9fa;
+        }
+
+        .accordion-header h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .accordion-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-content-inner {
+            padding: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: #2c3e50;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        .access-easy {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .access-4x4 {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .map-container {
+                flex-direction: column;
+            }
+
+            .colombia-map {
+                min-width: 100%;
+            }
+
+            .info-panel {
+                flex: 1;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="/images/MadatourLogo.png" alt="Logo MaDaTours">
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" data-i18n="nav.home">Inicio</a>
+                    <span style="margin: 0 10px;">|</span>
+                    <a href="#" class="active" data-i18n="nav.flightSites">Nuestros sitios de vuelo</a>
+                </li>
+                <li><a href="login.html" id="link-nav-login" data-i18n="nav.login">Login</a></li>
+                <li><a href="registro.html" id="link-nav-registro" data-i18n="nav.register">Registrarse</a></li>
+                <li>
+                    <select id="language-selector" onchange="changeLanguage(this.value)">
+                        <option value="es">ES - Español</option>
+                        <option value="en">EN - English</option>
+                        <option value="de">DE - Deutsch</option>
+                        <option value="fr">FR - Français</option>
+                        <option value="nl">NL - Nederlands</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flight-sites-container">
+        <!--
+            Acordeón interactivo por departamento
+            Cada departamento es un panel que se expande para mostrar sus sitios de vuelo.
+            Responsive, accesible y fácil de navegar.
+        -->
+        <div class="flight-sites-header">
+            <h1>🪂 Sitios de Vuelo en Colombia</h1>
+            <p>Explora los mejores lugares para volar en los departamentos destacados.</p>
+        </div>
+        <section class="departments-accordion" id="departmentsAccordion">
+            <!-- El contenido se genera dinámicamente con JS -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MaDaTours. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+    </footer>
+
+    <script src="sitios-vuelo.js"></script>
+</body>
+</html>

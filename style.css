@@ -1,3 +1,122 @@
+/* --- ACORDEÓN DE DEPARTAMENTOS --- */
+.departments-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.accordion-department {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+.accordion-department:hover {
+    box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+}
+
+.accordion-toggle {
+    width: 100%;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 22px 32px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 16px 16px 0 0;
+}
+.accordion-toggle[aria-expanded="true"] {
+    background: #219150;
+}
+.accordion-toggle .dep-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.accordion-toggle .chevron {
+    transition: transform 0.2s;
+}
+.accordion-toggle[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+}
+
+.accordion-panel {
+    padding: 24px 32px 32px 32px;
+    background: #f8f9fa;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjeta de sitio de vuelo dentro del acordeón */
+.flight-site-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(39,174,96,0.07);
+    margin-bottom: 18px;
+    padding: 18px 20px;
+    transition: box-shadow 0.2s;
+}
+.flight-site-card:hover {
+    box-shadow: 0 4px 16px rgba(39,174,96,0.13);
+}
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.site-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #27ae60;
+}
+.site-gps-btn {
+    background: #eafaf1;
+    color: #219150;
+    border-radius: 6px;
+    padding: 4px 12px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.site-gps-btn:hover {
+    background: #d4f5e9;
+}
+.site-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px 24px;
+    font-size: 1rem;
+    color: #34495e;
+    margin-top: 8px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 700px) {
+    .departments-accordion {
+        padding: 0 4vw;
+    }
+    .accordion-toggle, .accordion-panel {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .site-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
 /*
     Documentación de estilos CSS para el proyecto
 
